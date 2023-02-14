@@ -1,0 +1,109 @@
+.container {
+  &__sequencer {
+    padding: 2em 0;
+    border-radius: 5px;
+    width: fit-content;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: fit-content;
+    margin: auto;
+  }
+
+  &__controls {
+    display: flex;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+  }
+
+  &__play-button {
+    margin: auto;
+    width: 8em;
+    height: 8em;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    border-radius: 5px;
+
+    cursor: pointer;
+    border: none;
+    border: 5px;
+    margin: 0 4em;
+
+    &:hover {
+        background-color: #f3b37e;
+    }
+  }
+
+  &__bpm {
+    height: 8em;
+    width: 8em;
+  }
+
+  &__sequencer-row {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  &__note {
+    border-radius: 5px;
+    height: 8em;
+    width: 8em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    margin: 2px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #dedddd;
+    }
+  }
+
+  &__note-is-active {
+    background-color: #F5AC72;
+    border: 1px solid black;
+
+    &:hover {
+        background: transparent;
+        background-color: #f3b37e;
+    }
+  }
+x
+  &__shake {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    @keyframes shake {
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+  }
+}
+
+.note-not-active {
+  background-color: solid grey;
+}

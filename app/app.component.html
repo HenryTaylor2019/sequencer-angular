@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="container__controls">
+    <button
+      *ngIf="!started; else stop"
+      id="play-button"
+      class="container__play-button"
+      (click)="configPlayButton()"
+    >
+      Play
+    </button>
+    <ng-template #stop>
+      <button
+        id="play-button"
+        class="container__play-button"
+        (click)="configPlayButton()"
+      >
+        Stop
+      </button>
+    </ng-template>
+
+    <div class="container__input" *ngIf="!this.playing">
+      <input
+        class="container__bpm"
+        type="range"
+        min="50"
+        max="150"
+        value="120"
+        #ref
+        [(ngModel)]="bpm"
+      />
+    </div>
+    <p>{{ bpm }}</p>
+  </div>
+
+  <div id="sequencer" class="container__sequencer">
+    <div *ngFor="let grid of rows; index as rowIndex" class="container__grid">
+      <div
+        *ngFor="let row of rows; index as noteIndex"
+        id="{{ noteIndex }}"
+        class="container__sequencer-row"
+      >
+        <button
+          class="container__note"
+          (click)="handleNoteClick(rowIndex, noteIndex)"
+          [ngClass]="{ 'container__note-is-active': grid[noteIndex].isActive }"
+          #ref
+        >
+          {{ grid[noteIndex].id }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
